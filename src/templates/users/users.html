@@ -1,0 +1,21 @@
+<template>
+    <div class="user">
+        <div class="colomn-l">
+            <div class="back">
+                <a href="#">${user.info.last_name} ${user.info.first_name}</a>
+            </div>
+            <div class="friends-row">
+                <a class="box" repeat.for="fr of user.friends" href="#users/${fr.uid}">${fr.last_name} ${fr.first_name}</a>
+            </div>
+        </div>
+        <div class="colomn-r">
+            <div class="vk-logo">
+                <img src="http://image.flaticon.com/icons/svg/25/25684.svg" alt="" />
+            </div>
+            <div class="wall" repeat.for="wall of user.wall" if.bind="wall.text" >
+                <div innerhtml.bind="wall.text"></div>
+            </div>
+           
+        </div>
+    </div>
+</template>

@@ -1,0 +1,27 @@
+<template>
+    <div class="adder">
+        <form class="search" submit.trigger="$parent.add(id)">
+            <label for="id"><em>Введите идентификатор:</em></label>
+            <input class="id" name="id" value.bind="id">
+            <button type="submit">Добавить пользователя</button>
+        </form>
+        <div class="box-fre">
+            <button type="submit" click.trigger="$parent.friend()">Построить</button>
+            <div class="boxes">
+                <div class="box" repeat.for="users of $parent.people" if.bind="users.deactivated != 'deleted'">
+                    <div class="close" click.trigger="remove($index)"></div>
+                    <section class="first_name">${users.first_name}</section>
+                </div>
+            </div>
+        </div>
+        <div class="result" if.bind="$parent.friends">
+
+            <a class="friend" repeat.for="fr of $parent.friends" href="#users/${fr.id}" css="opacity: ${0.7 + frOpacity*fr.uid.length}" if.bind="fr.name != undefined">
+                <section class="name">${fr.name} | </section>
+                <section class="age">День рождения: ${fr.date}</section>
+                <section class="gender"> ${fr.sex}</section>
+                <section class="friends">Друзья среди добавленных: ${fr.uid.length}</section>
+            </a>
+        </div>
+    </div>
+</template>

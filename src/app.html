@@ -1,0 +1,10 @@
+<template>
+    <router-view class="${(reload != true ? 'blur' : '')}"></router-view>
+
+    <!--  подгрузка  -->
+    <div class="reload ${(reload == true ? 'not-reload' : '')}">
+        <div class="loading">
+            <img src="https://www.timewarnercable.com/content/dam/residential/images/checkout/global/spinner.gif" alt="" />
+        </div>
+    </div>
+</template>

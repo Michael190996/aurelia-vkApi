@@ -1,0 +1,348 @@
+html,
+body {
+    margin: auto;
+    height: 100%;
+}
+
+button[type="submit"] {
+    display: block;
+    background: #67b967;
+    border: none;
+    border-radius: 3px;
+    padding: 7px;
+    color: #fff;
+    box-shadow: 0px 0px 2px 0px black;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button[type="submit"]:hover {
+    background: #5da75d;
+}
+
+button[type="submit"]:active {
+    background: #6b9c6b;
+}
+
+input {
+    outline: none;
+    display: block;
+}
+
+router-view {
+    transition: all 0.3s;
+}
+
+.box-fre {
+    display: block;
+    margin: 0px 10%;
+}
+
+.box-fre button[type="submit"] {
+    border-radius: 0;
+    margin-bottom: 3px;
+}
+
+.box-fre .boxes {
+    padding: 5px;
+    min-height: 30px;
+    border: 1px solid #aaa;
+}
+
+.box-fre .boxes .box {
+    width: auto;
+    background: #ededed;
+    padding: 6px;
+    padding-left: 20px;
+    position: relative;
+    display: inline-block;
+    border-radius: 5px;
+    color: #000;
+    border: 1px solid #aaa;
+    margin: 3px 3px;
+}
+
+.box-fre .boxes .box section {
+    font-size: 1.1em;
+}
+
+.box-fre .boxes .box .close {
+    position: absolute;
+    margin: auto;
+    left: 4px;
+    bottom: 0;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+
+.box-fre .boxes .box .close:after,
+.box-fre .boxes .box .close:before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: #aaa;
+    margin-top: 7px;
+    transition: all 0.5s;
+}
+
+.box-fre .boxes .box .close:after {
+    transform: rotate(45deg);
+}
+
+.box-fre .boxes .box .close:before {
+    transform: rotate(-45deg);
+}
+
+.box-fre .boxes .box .close:hover:after,
+.box-fre .boxes .box .close:hover:before {
+    background: #000;
+}
+
+form.search {
+    margin: auto;
+    width: auto;
+    max-width: 500px;
+    width: 60%;
+}
+
+form.search label[for="id"] em {
+    font-size: 1.1em;
+}
+
+form.search input[name="id"] {
+    padding: 3px;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 1.3em;
+}
+
+form.search button[type="submit"] {
+    float: right;
+    margin-top: 2px;
+    font-size: 0.9em;
+    min-width: 240px;
+}
+
+.result {
+    display: table;
+    margin: auto;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    margin: 20px 10%;
+}
+
+.result .friend {
+    border: 1px solid #8c8c7d;
+    position: relative;
+    cursor: pointer;
+    display: table;
+    box-sizing: border-box;
+    padding: 5px;
+    height: 40px;
+    width: 100%;
+    margin: 6px 0px;
+    color: #000;
+    transition: all 0.3s;
+}
+
+.result .friend:hover {
+    opacity: 1 !important;
+}
+
+.result .friend .name {
+    float: left;
+}
+
+.result .friend .age {
+    float: right;
+    display: inline-block;
+}
+
+.result .friend .gender {
+    margin-top: 3px;
+}
+
+.adder {
+    min-height: 500px;
+    display: flex;
+    align-content: center;
+    flex-flow: wrap row;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.adder form.search {
+    margin-bottom: 1%;
+}
+
+body .reload {
+    opacity: 1
+}
+
+body .not-reload {
+    opacity: 0 !important;
+    top: -100% !important;
+}
+
+body .blur * {
+    -webkit-filter: blur(1px);
+}
+
+.reload {
+    margin: 0;
+    transition: top 0.1s, opacity 0.3s;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+.reload .loading {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 10;
+}
+
+.reload .loading img {
+    width: 36px;
+    height: 36px;
+}
+
+.user {
+    height: 100%;
+    display: flex;
+    justify-content: space-between
+}
+
+.user .colomn-l {
+    overflow: auto;
+    overflow-x: hidden;
+    padding-right: 16px;
+    box-sizing: border-box;
+    width: 20%;
+    height: 100%;
+    border-right: 1px solid #000;
+    position: relative;
+}
+
+.user .colomn-r {
+    width: 80%;
+    overflow: auto;
+    overflow-x: hidden;
+    height: 100%;
+    position: relative;
+}
+
+.colomn-l {}
+
+.colomn-l .back {
+    padding: 10px 0px;
+    display: block;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    border-bottom: 2px solid #000;
+}
+
+.colomn-l .back a {
+    color: #000;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.colomn-l .back a:before,
+.colomn-l .back a:after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    bottom: 0;
+    margin: auto;
+    left: -15px;
+    width: 2px;
+    height: 15px;
+    background: #ccc;
+}
+
+.colomn-l .back a:before {
+    transform: rotate(40deg)
+}
+
+.colomn-l .back a:after {
+    transform: rotate(-40deg)
+}
+
+.colomn-l .back a:hover {
+    color: #818c6f;
+}
+
+.colomn-l .friends-row {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.colomn-l .friends-row .box {
+    display: block;
+    box-sizing: border-box;
+    padding: 3px 5px;
+    color: #000;
+    text-decoration: none;
+    font-size: 1.05em;
+    transition: all 0.2s;
+}
+
+.colomn-l .friends-row .box:hover {
+    color: #818c6f;
+}
+
+.colomn-r {
+    display: flex;
+    justify-content: center;
+    flex-flow: row;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: auto;
+    width: auto;
+}
+
+.colomn-r .vk-logo {
+    margin: 20px;
+    margin-bottom: 10px;
+}
+
+.colomn-r .vk-logo img {
+    width: 50px;
+    height: 50px;
+}
+
+.colomn-r .wall {
+    padding: 5px;
+    margin: 0px 10%;
+    width: 80%;
+    border: 1px solid #c3cbd4;
+    margin-bottom: 11px;
+    word-break: break-all;
+}
