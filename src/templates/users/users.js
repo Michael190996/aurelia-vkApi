@@ -19,7 +19,6 @@ export class Users {
     
     constructor(app) {
         this.http = app.http;
-        this.$ = app.$;
     }
 
     // TODO: запросы на информацию о пользователе

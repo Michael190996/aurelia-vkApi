@@ -1,13 +1,9 @@
 import { inject } from 'aurelia-framework';
-import { result } from './test'
+import  $  from 'jquery';
 
-// так как fetch client, видимо, не работает c jsonp, 
-// решил использовать аякс запросы в джквери
-import $ from 'jquery';
 
-@inject(() => $.post, () => $)
-
-export class App {    
+@inject(()=> $.post)
+export class App {
     set reload(a) {
         this.reloaBot = a;
     }
@@ -16,12 +12,30 @@ export class App {
         return this.reloaBot;
     }
     
-    constructor(http, $) {
+    constructor(http) {
         this.http = http;
-        this.$ = $; 
         this.reload = true;
     }
 
+    // роуты на 2 страницы
+    configureRouter(config, router) {     
+        config.title = 'Aurelia';
+        config.map([
+            {
+                route: ['', 'app'],
+                moduleId: './templates/result/result',
+
+         }, {
+                route: ['users', 'users/:id'],
+                name: 'users',
+                moduleId: './templates/users/users',
+                nav: true,
+                title: 'users'
+         }
+      ]);
+      this.router = router;
+    }
+    
     // TODO: функция добавляет в массив people пользователей
     add(id) {
         if (this.reload == false || !id) // если запрос не закончился или в аргументе ничего нет, то выходим из функции
@@ -45,7 +59,7 @@ export class App {
         for (let i in this.people)
             search(id, this.people[i].uid, (id, uid, is) => {
                 if (id == uid) {
-                    if (is != "deleted")
+                    if (is != 'deleted')
                         alert(`Идентификатор "${uid}" уже добавлен`);
                     else
                         alert(`Идентификатор "${uid}" уже добавлен, но аккаунт с ним был удален`)
@@ -66,8 +80,8 @@ export class App {
             this.reload = false;
             this.http({
                 url: 'https://api.vk.com/method/users.get',
-                jsonp: "callback",
-                dataType: "jsonp",
+                jsonp: 'callback',
+                dataType: 'jsonp',
                 "data": {
                     user_ids: id.join(',')
                 },
@@ -102,16 +116,16 @@ export class App {
             // запрашивает друзей пользователей
             this.http({
                 url: 'https://api.vk.com/method/friends.get',
-                jsonp: "callback",
-                dataType: "jsonp",
+                jsonp: 'callback',
+                dataType: 'jsonp',
                 "data": {
                     user_id: el.uid,
-                    fields: "nickname, domain, sex, bdate"
+                    fields: 'nickname, domain, sex, bdate'
                 },
                 success: (response) => {
                     // собираем друзей
                     el.friends = response.response;
-                    for (let i in el.friends) {
+                    for (let i = 0; i < el.friends.length-1; i++) {
                         this.friends[el.friends[i].uid] = this.friends[el.friends[i].uid] || {
                             uid: [],
                             name: `${el.friends[i].last_name} ${el.friends[i].first_name}`,
@@ -134,19 +148,16 @@ export class App {
                     this.frOpacity = 30 / this.frOpacity / 100;
 
                     var friends = [];
-                    for (var i in this.friends)
-                        if (this.friends[i].collection == undefined && this.friends[i].deactivated != "deleted")
+                    for (var i in this.friends) {
+                        if (this.friends[i].collection == undefined && this.friends[i].deactivated != 'deleted')
                             friends.push(this.friends[i]);
+                    }
 
                     this.friends = friends.sort((a, b) => {
-                        if (!a.name || !b.name)
-                            return 0;
-                        if (a.name > b.name)
-                            return 1;
-                        else if (a.name < b.name)
-                            return -1;
-                        else
-                            return 0;
+                        if (!a.name || !b.name) return 0;
+                        if (a.name > b.name) return 1;
+                        else if (a.name < b.name) return -1;
+                        else return 0;
                     });
 
                     this.reload = true;
@@ -154,24 +165,5 @@ export class App {
 
             });
         })
-    }
-
-    // роуты на 2 страницы
-    configureRouter(config, router) {
-        config.title = 'Aurelia';
-        config.map([
-            {
-                route: ['', 'app'],
-                moduleId: './templates/result/result',
-
-         }, {
-                route: ['users', 'users/:id'],
-                name: 'users',
-                moduleId: './templates/users/users',
-                nav: true,
-                title: 'users'
-         }
-      ]);
-      this.router = router;
     }
 }
