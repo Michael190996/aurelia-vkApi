@@ -1,13 +1,10 @@
-import {
-    inject
-}
+import { inject }
 from 'aurelia-framework';
 
 // из класса App берется джквери и reload
 import { App } from '../../app';
 
 @inject(App)
-
 export class Users {    
     set reload(a) {
         App.reloaBot = a;
@@ -32,9 +29,9 @@ export class Users {
         // запрос на данные о пользователе
         this.http({
             url: 'https://api.vk.com/method/users.get',
-            jsonp: "callback",
-            dataType: "jsonp",
-            "data": {
+            jsonp: callback,
+            dataType: jsonp,
+            data: {
                 user_ids: this.user.id
             },
             success: (response) => {
@@ -48,9 +45,9 @@ export class Users {
         // запрос на посты пользователя
         this.http({
             url: 'https://api.vk.com/method/wall.get',
-            jsonp: "callback",
-            dataType: "jsonp",
-            "data": {           
+            jsonp: 'callback',
+            dataType: 'jsonp',
+            data: {           
                 owner_id: this.user.id,
                 filter: 'owner',
                 extended: 0
@@ -66,11 +63,11 @@ export class Users {
         // запрос на друзей пользователя
         this.http({
             url: 'https://api.vk.com/method/friends.get',
-            jsonp: "callback",
-            dataType: "jsonp",
-            "data": {    
+            jsonp: 'callback',
+            dataType: 'jsonp',
+            data: {    
                 user_id: this.user.id,
-                fields: "nickname, domain, sex, bdate"
+                fields: 'nickname, domain, sex, bdate'
             },
             success: (response) => {
                 if (response.error)

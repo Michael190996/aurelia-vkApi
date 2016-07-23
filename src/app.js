@@ -82,7 +82,7 @@ export class App {
                 url: 'https://api.vk.com/method/users.get',
                 jsonp: 'callback',
                 dataType: 'jsonp',
-                "data": {
+                data: {
                     user_ids: id.join(',')
                 },
                 success: ((response) => {
@@ -118,7 +118,7 @@ export class App {
                 url: 'https://api.vk.com/method/friends.get',
                 jsonp: 'callback',
                 dataType: 'jsonp',
-                "data": {
+                data: {
                     user_id: el.uid,
                     fields: 'nickname, domain, sex, bdate'
                 },
