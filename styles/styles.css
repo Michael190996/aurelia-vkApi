@@ -135,6 +135,7 @@ form.search button[type="submit"] {
     overflow: hidden;
     position: relative;
     margin: 20px 10%;
+    padding: 0;
 }
 
 .result .friend {
@@ -147,8 +148,11 @@ form.search button[type="submit"] {
     height: 40px;
     width: 100%;
     margin: 6px 0px;
-    color: #000;
     transition: all 0.3s;
+}
+.result .friend a { 
+    text-decoration: none;
+    color: #000;
 }
 
 .result .friend:hover {
@@ -302,19 +306,22 @@ body .blur * {
     width: 100%;
     text-align: center;
     margin-top: 10px;
+    padding: 0;
 }
 
 .colomn-l .friends-row .box {
     display: block;
-    box-sizing: border-box;
     padding: 3px 5px;
-    color: #000;
-    text-decoration: none;
-    font-size: 1.05em;
-    transition: all 0.2s;
+    box-sizing: border-box;
 }
-
-.colomn-l .friends-row .box:hover {
+.colomn-l .friends-row .box a {
+    padding: 3px 5px;
+    font-size: 1.05em;
+    text-decoration: none;
+    transition: all 0.2s;
+    color: #000;   
+}
+.colomn-l .friends-row .box a:hover {
     color: #818c6f;
 }
 
