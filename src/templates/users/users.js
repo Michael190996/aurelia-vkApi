@@ -1,13 +1,12 @@
-import { inject }
-from 'aurelia-framework';
+import { inject } from 'aurelia-framework';
 
-// из класса App берется джквери и reload
+// из класса App берется джквери.хттп и reload
 import { App } from '../../app';
 
 @inject(App)
 export class Users {    
     set reload(a) {
-        App.reloaBot = a;
+        return App.reloaBot = a;
     }
     
     get reload() {
@@ -29,8 +28,8 @@ export class Users {
         // запрос на данные о пользователе
         this.http({
             url: 'https://api.vk.com/method/users.get',
-            jsonp: callback,
-            dataType: jsonp,
+            jsonp: 'callback',
+            dataType: 'jsonp',
             data: {
                 user_ids: this.user.id
             },
@@ -38,7 +37,7 @@ export class Users {
                 if (response.error)
                     alert(response.error.error_msg);
                 else
-                    this.user.info = response.response[0]
+                    this.user.info = response.response[0];
             }
         }).then(()=> this.reload = true); // закроется окно с той подгрузкой
         

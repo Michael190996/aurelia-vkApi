@@ -1,6 +1,5 @@
 import { inject } from 'aurelia-framework';
-import  $  from 'jquery';
-
+import $ from 'jquery';
 
 @inject(()=> $.post)
 export class App {
@@ -38,30 +37,29 @@ export class App {
     
     // TODO: функция добавляет в массив people пользователей
     add(id) {
-        if (this.reload == false || !id) // если запрос не закончился или в аргументе ничего нет, то выходим из функции
-            return false;
+        // если запрос не закончился или в аргументе ничего нет, то выходим из функции
+        if (this.reload == false || !id) return false;
 
-        if (!Array.isArray(id) && String(id).indexOf(',') != -1)
+        if (!Array.isArray(id) && String(id).indexOf(',') != -1) 
             id = id.split(',');
-        else if (String(id).indexOf(',') == -1)
-            id = [id];
-
+        else {
+            if (String(id).indexOf(',') == -1) 
+                id = [id];
+        }
+        
         this.people = this.people || new Array();
 
         let search = (id, uid, callback, is) => {
-            for (let i in id) {
-                if (callback(id[i], uid, is)) {
-                    id.splice(i, 1);
-                }
-            }
+            for (let i in id) 
+                if (callback(id[i], uid, is)) id.splice(i, 1);           
         }
 
         for (let i in this.people)
             search(id, this.people[i].uid, (id, uid, is) => {
                 if (id == uid) {
-                    if (is != 'deleted')
+                    if (is != 'deleted') 
                         alert(`Идентификатор "${uid}" уже добавлен`);
-                    else
+                    else 
                         alert(`Идентификатор "${uid}" уже добавлен, но аккаунт с ним был удален`)
                     return true;
                 }
@@ -73,8 +71,7 @@ export class App {
                 return true;
             }
         });
-
-        
+       
         // запрашивает у ВК пользователей
         if (id.toString != '') {
             this.reload = false;
@@ -85,27 +82,25 @@ export class App {
                 data: {
                     user_ids: id.join(',')
                 },
-                success: ((response) => {
+                success: (response) => {
                     if (response.error)
                         alert(response.error.error_msg);
                     else
                         this.people = this.people.concat(response.response);
-                }).bind(this)
+                }
             }).then(() => this.reload = true);
         }
     }
 
     // TODO: удаление пользователя
     remove(id) {
-        if (this.people && this.people[id])
-            this.people.splice(id, 1);
+        if (this.people && this.people[id]) return this.people.splice(id, 1);
     }
 
     // TODO: вывыд всех друзей пользователей
     friend() {
         // так же, как и в методе 
-        if (!this.people || !this.people[0] || !Array.isArray(this.people) || this.reload == false) 
-            return false;
+        if (!this.people || !this.people[0] || !Array.isArray(this.people) || this.reload == false) return false;
         this.reload = false;
 
         this.friends = new Array();
@@ -162,7 +157,6 @@ export class App {
 
                     this.reload = true;
                 }
-
             });
         })
     }
