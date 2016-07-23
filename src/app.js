@@ -50,11 +50,11 @@ export class App {
         this.people = this.people || new Array();
 
         let search = (id, uid, callback, is) => {
-            for (let i in id) 
+            for (let i = 0; i < id.length; i++) 
                 if (callback(id[i], uid, is)) id.splice(i, 1);           
         }
 
-        for (let i in this.people)
+        for (let i = 0; i < this.people.length; i++) {
             search(id, this.people[i].uid, (id, uid, is) => {
                 if (id == uid) {
                     if (is != 'deleted') 
@@ -64,6 +64,7 @@ export class App {
                     return true;
                 }
             }, this.people[i].deactivated);
+        }
 
         search(id, 0, (id, uid) => {
             if (id <= uid) {
@@ -103,7 +104,7 @@ export class App {
         if (!this.people || !this.people[0] || !Array.isArray(this.people) || this.reload == false) return false;
         this.reload = false;
 
-        this.friends = new Array();
+        this.friends = new Object();
         this.frOpacity = 0;
         let listener = 0;
 
@@ -120,7 +121,7 @@ export class App {
                 success: (response) => {
                     // собираем друзей
                     el.friends = response.response;
-                    for (let i = 0; i < el.friends.length-1; i++) {
+                    for (let i in el.friends) {
                         this.friends[el.friends[i].uid] = this.friends[el.friends[i].uid] || {
                             uid: new Array(),
                             name: `${el.friends[i].last_name} ${el.friends[i].first_name}`,
@@ -139,12 +140,12 @@ export class App {
                 listener++;
                 
                 // после того, как все запросы закончатся, пойдет фильтрация элементов
-                if (listener == this.people.length) {
+                if (listener == this.people.length) {                
                     this.frOpacity = 30 / this.frOpacity / 100;
-
-                    var friends = new Array();
-                    for (var i in this.friends) {
-                        if (this.friends[i].collection == undefined && this.friends[i].deactivated != 'deleted')
+                    
+                    let friends = new Array();
+                    for (let i in this.friends) {
+                        if (this.friends[i] && this.friends[i].deactivated != 'deleted')
                             friends.push(this.friends[i]);
                     }
 

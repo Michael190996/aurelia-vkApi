@@ -16,7 +16,7 @@
         </div>
         <div class="result" if.bind="$parent.friends">
 
-            <a class="friend" repeat.for="fr of $parent.friends" href="#users/${fr.id}" css="opacity: ${0.7 + frOpacity*fr.uid.length}" if.bind="fr.name != undefined">
+            <a class="friend" if.bind="$parent.friends.length" repeat.for="fr of $parent.friends" href="#users/${fr.id}" css="opacity: ${0.7 + frOpacity*fr.uid.length}" if.bind="fr.name != undefined">
                 <section class="name">${fr.name} | </section>
                 <section class="age">День рождения: ${fr.date}</section>
                 <section class="gender"> ${fr.sex}</section>
