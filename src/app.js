@@ -127,7 +127,7 @@ export class App {
                     el.friends = response.response;
                     for (let i = 0; i < el.friends.length-1; i++) {
                         this.friends[el.friends[i].uid] = this.friends[el.friends[i].uid] || {
-                            uid: [],
+                            uid: new Array(),
                             name: `${el.friends[i].last_name} ${el.friends[i].first_name}`,
                             domain: el.friends[i].domain,
                             sex: (el.friends[i].sex == 1 ? 'Женщина' : 'Мужчина'),
@@ -147,7 +147,7 @@ export class App {
                 if (listener == this.people.length) {
                     this.frOpacity = 30 / this.frOpacity / 100;
 
-                    var friends = [];
+                    var friends = new Array();
                     for (var i in this.friends) {
                         if (this.friends[i].collection == undefined && this.friends[i].deactivated != 'deleted')
                             friends.push(this.friends[i]);
