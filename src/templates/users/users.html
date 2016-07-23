@@ -14,10 +14,9 @@
             <div class="vk-logo">
                 <img src="http://image.flaticon.com/icons/svg/25/25684.svg" alt="" />
             </div>
-            <div class="wall" repeat.for="wall of user.wall" if.bind="wall.text" >
-                <div innerhtml.bind="wall.text"></div>
-            </div>
-           
+            <ul class="wall">
+                <li repeat.for="wall of user.wall" if.bind="wall.text" class="box" innerhtml.bind="wall.text"></li>
+            </ul>         
         </div>
     </div>
 </template>
