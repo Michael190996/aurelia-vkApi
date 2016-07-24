@@ -1,26 +1,30 @@
 <template>
     <div class="adder">
-        <form class="search" submit.trigger="$parent.add(id)">
-            <label for="id"><em>Введите идентификатор:</em></label>
-            <input class="id" name="id" value.bind="id">
-            <button type="submit">Добавить пользователя</button>
-        </form>
+        <div class="search">
+            <form class="form-inline" submit.trigger="$parent.result.add(id)">
+                <div class="form-group">
+                    <input class="id form-control" name="id" value.bind="id" placeholder="Введите идентификатор">
+                </div>
+                <button class="btn btn-success" type="submit">Добавить пользователя</button>
+            </form>
+        </div>
+
         <div class="box-fre">
-            <button type="submit" click.trigger="$parent.friend()">Построить</button>
+            <button type="submit" class="btn btn-success" click.trigger="$parent.result.friend()">Построить</button>
             <div class="boxes">
-                <div class="box" repeat.for="users of $parent.people" if.bind="users.deactivated != 'deleted'">
-                    <div class="close" click.trigger="remove($index)"></div>
+                <div class="box btn btn-default row" repeat.for="users of $parent.result.people" if.bind="users.deactivated != 'deleted'">
+                    <div class="close glyphicon glyphicon-remove" click.trigger="$parent.$parent.result.remove($index)"></div>
                     <section class="first_name">${users.first_name}</section>
                 </div>
             </div>
         </div>
-        <ul class="result" if.bind="$parent.friends.length" if.bind="$parent.friends">
-            <li class="friend" repeat.for="fr of $parent.friends" css="opacity: ${0.7 + frOpacity*fr.uid.length}" if.bind="fr.name != undefined">
+
+        <ul class="result collapse ${($parent.result.friends.length ? 'in' : '')}" if.bind="$parent.result.friends.length" if.bind="$parent.result.friends">
+            <li class="friend" repeat.for="fr of $parent.result.friends" css="opacity: ${0.7 + $parent.$parent.result.frOpacity*fr.uid.length}" if.bind="fr.name != undefined">
                 <a href="#users/${fr.id}">
-                    <section class="name">${fr.name} | </section>
-                    <section class="age">День рождения: ${fr.date}</section>
-                    <section class="gender"> ${fr.sex}</section>
-                    <section class="friends">Друзья среди добавленных: ${fr.uid.length}</section>
+                    <section class="name-sex col-md-6">${fr.name} | ${fr.sex}</section>
+                    <section class="age col-md-6">День рождения: ${fr.date}</section>
+                    <section class="friends col-md-12">Друзья среди добавленных: ${fr.uid.length}</section>
                 </a>
             </li>
         </ul>

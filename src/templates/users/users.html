@@ -4,11 +4,11 @@
             <div class="back">
                 <a href="#">${user.info.last_name} ${user.info.first_name}</a>
             </div>
-                <ul class="friends-row">
-                   <li class="box" repeat.for="fr of user.friends">
-                        <a href="#users/${fr.uid}">${fr.last_name} ${fr.first_name}</a>
-                    </li>
-                </ul>
+            <ul class="friends-row">
+                <li class="box" repeat.for="fr of user.friends">
+                    <a href="#users/${fr.uid}">${fr.last_name} ${fr.first_name}</a>
+                </li>
+            </ul>
         </div>
         <div class="colomn-r">
             <div class="vk-logo">
@@ -16,7 +16,7 @@
             </div>
             <ul class="wall">
                 <li repeat.for="wall of user.wall" if.bind="wall.text" class="box" innerhtml.bind="wall.text"></li>
-            </ul>         
+            </ul>
         </div>
     </div>
 </template>
