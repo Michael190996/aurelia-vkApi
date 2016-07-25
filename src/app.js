@@ -39,7 +39,7 @@ export class App {
         // что-то вроде страницы тестов
         {
             route: ['tests/:id'],
-            moduleId: './tests/test',
+            moduleId: './tests/test'
         }
       ]);
       this.router = router;
