@@ -34,7 +34,7 @@ export class Users {
         // запрос на данные о пользователе,
         // запрос на посты пользователя,
         // запрос на друзей пользователя
-        if(this.access_token && this.access_token != '')
+        if(this.access_token && this.access_token != '') {
             this.http({
                 url: 'https://api.vk.com/method/execute',
                 jsonp: 'callback',
@@ -50,8 +50,8 @@ export class Users {
                         this.user = response.response;
                 }
             }).then(()=> this.reload = true); // закроется окно с той подгрузкой
-        else 
-        {
+       } else 
+       {
              // запрос на данные о пользователе
             this.http({
                 url: 'https://api.vk.com/method/users.get',
