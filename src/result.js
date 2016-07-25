@@ -40,7 +40,7 @@ export class Result {
                     if (is != 'deleted')
                         alert(`Идентификатор "${uid}" уже добавлен`);
                     else
-                        alert(`Идентификатор "${uid}" уже добавлен, но аккаунт с ним был удален`)
+                        alert(`Идентификатор "${uid}" уже добавлен, но аккаунт с ним был удален`);
                     return true;
                 }
             }, this.people[i].deactivated);
