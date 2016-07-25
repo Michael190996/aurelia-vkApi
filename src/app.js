@@ -25,8 +25,7 @@ export class App {
         config.map([
             {
                 route: ['', 'app'],
-                moduleId: './templates/result/result',
-
+                moduleId: './templates/result/result'
          }, {
                 route: ['users', 'users/:id'],
                 name: 'users',
