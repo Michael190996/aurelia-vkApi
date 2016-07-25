@@ -18,15 +18,15 @@
                 </div>
             </div>
         </div>
-
         <ul class="result collapse ${($parent.result.friends.length ? 'in' : '')}" if.bind="$parent.result.friends.length" if.bind="$parent.result.friends">
-            <li class="friend" repeat.for="fr of $parent.result.friends" css="opacity: ${0.7 + $parent.$parent.result.frOpacity*fr.uid.length}" if.bind="fr.name != undefined">
+            <li class="friend" repeat.for="fr of $parent.result.friends" css="opacity: ${0.7 + $parent.$parent.result.frOpacity*fr.uid.length}">
                 <a href="#users/${fr.id}">
                     <section class="name-sex col-md-6">${fr.name} | ${fr.sex}</section>
                     <section class="age col-md-6">День рождения: ${fr.date}</section>
-                    <section class="friends col-md-12">Друзья среди добавленных: ${fr.uid.length}</section>
+                    <section class="friends col-md-12">Друзья среди добавленных: +${fr.uid.length}</section>
                 </a>
             </li>
         </ul>
+        <small class="friends-count" if.bind="$parent.result.friends.length">Всего друзей: ${$parent.result.friends.length-1}</small>
     </div>
 </template>

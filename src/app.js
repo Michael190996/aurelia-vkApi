@@ -33,7 +33,14 @@ export class App {
                 moduleId: './templates/users/users',
                 nav: true,
                 title: 'users'
-         }
+         },
+            
+        // bug aurelia-http-client
+        // что-то вроде страницы тестов
+        {
+            route: ['tests/:id'],
+            moduleId: './tests/test',
+        }
       ]);
       this.router = router;
     }

@@ -7,12 +7,12 @@ router-view {
 }
 
 .search {
-  text-align: center;
-}
-.search input[name="id"] {
-  width: 500px;
+    text-align: center;
 }
 
+.search input[name="id"] {
+    width: 500px;
+}
 
 body .reload {
     opacity: 1
@@ -59,213 +59,196 @@ body .blur * {
     height: 36px;
 }
 
-
 .box-fre {
-  display: block;
-  width: 80%;
-  margin: 0px 10%;
+    display: block;
+    width: 80%;
+    margin: 0px 10%;
 }
+
 .box-fre button[type="submit"] {
-  border-radius: 0;
+    border-radius: 0;
 }
+
 .box-fre .boxes {
-  margin: auto;
-  text-align: center;
-  display: block;
-  width: 100%;
-  min-height: 43px;
-  padding: 3px 0px;
-  color: #555;
-  background-color: #fff;
-  background-image: none;
-  border: 1px solid #ccc;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
-  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    margin: auto;
+    text-align: center;
+    display: block;
+    width: 100%;
+    min-height: 43px;
+    padding: 3px 0px;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+    -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
+
 .box-fre .boxes .box {
-  padding-left: 23px;
-  margin: 1px;
-  margin-top: 3px;
-  position: relative;
+    padding-left: 23px;
+    margin: 1px;
+    position: relative;
 }
+
 .box-fre .boxes .box .close {
-  position: absolute;
-  margin: auto;
-  left: 5px;
-  display: table;
-  bottom: 0;
-  top: 0;
-  font-size: 1em;
-  cursor: pointer;
+    position: absolute;
+    margin: auto;
+    left: 5px;
+    bottom: 0;
+    top: 0;
+    height: 15px;
+    font-size: 1em;
+    cursor: pointer;
 }
 
 .result {
-  list-style: none;
-  width: 80%;
-  margin: 0px 10%;
-  padding: 0;
-  box-sizing: border-box;
+    list-style: none;
+    width: 80%;
+    margin: 0px 10%;
+    padding: 0;
+    box-sizing: border-box;
 }
+
 .result .friend {
-  border: 1px solid #8c8c7d;
-  position: relative;
-  cursor: pointer;
-  display: table;
-  box-sizing: border-box;
-  padding: 5px 0px;
-  min-height: 50px;
-  width: 100%;
-  margin: 5px 0px;
-  transition: all 0.3s;
+    border: 1px solid #8c8c7d;
+    position: relative;
+    cursor: pointer;
+    display: table;
+    box-sizing: border-box;
+    padding: 5px 0px;
+    min-height: 50px;
+    width: 100%;
+    margin: 5px 0px;
+    transition: all 0.3s;
 }
+
 .result .friend .name-sex {
-  text-align: left;
+    text-align: left;
 }
+
 .result .friend .age {
-  text-align: right;
+    text-align: right;
 }
+
 .result .friend a {
-  color: #000;
+    color: #000;
 }
+
 .result .friend:hover {
-  opacity: 1 !important;
+    opacity: 1 !important;
 }
 
 .adder {
-  width: 100%;
-  margin-top: 13px;
+    width: 100%;
+    margin-top: 13px;
 }
+
 .adder .box-fre {
-  margin-top: 1.6%;
+    margin-top: 1.6%;
 }
 
-
-.user {
+.column-l {
+    position: fixed;
     height: 100%;
-    display: flex;
-    justify-content: space-between
-}
-
-.user .colomn-l {
-    overflow: auto;
-    overflow-x: hidden;
-    padding-right: 16px;
-    box-sizing: border-box;
     width: 20%;
-    height: 100%;
-    border-right: 1px solid #000;
-    position: relative;
-}
-
-.user .colomn-r {
-    width: 80%;
     overflow: auto;
-    overflow-x: hidden;
-    height: 100%;
-    position: relative;
+    border-right: 1px solid #bfbdbd;
 }
 
-.colomn-l {}
-
-.colomn-l .back {
+.column-l .back {
     padding: 10px 0px;
+    padding-left: 13.5px;
+    box-sizing: border-box;
     display: block;
     margin: auto;
     width: 100%;
     text-align: center;
-    border-bottom: 2px solid #000;
+    border-bottom: 1px solid #eee;
 }
 
-.colomn-l .back a {
+.column-l .back a {
     color: #000;
-    cursor: pointer;
+    text-decoration: none;
+}
+
+.column-l .back .name {
+    color: #000;
     font-size: 1.2em;
     font-weight: bold;
     text-decoration: none;
     transition: all 0.3s;
     position: relative;
+    display: inline;
 }
 
-.colomn-l .back a:before,
-.colomn-l .back a:after {
-    content: '';
+.column-l .back .close {
     position: absolute;
-    top: 1px;
+    top: 0;
     bottom: 0;
+    left: -27px;
     margin: auto;
-    left: -15px;
-    width: 2px;
-    height: 15px;
-    background: #ccc;
 }
 
-.colomn-l .back a:before {
-    transform: rotate(40deg)
-}
-
-.colomn-l .back a:after {
-    transform: rotate(-40deg)
-}
-
-.colomn-l .back a:hover {
-    color: #818c6f;
-}
-
-.colomn-l .friends-row {
-    width: 100%;
+.column-l .friends .box {
     text-align: center;
-    margin-top: 10px;
-    padding: 0;
 }
 
-.colomn-l .friends-row .box {
-    display: block;
-    padding: 3px 5px;
-    box-sizing: border-box;
-}
-.colomn-l .friends-row .box a {
-    padding: 3px 5px;
-    font-size: 1.05em;
-    text-decoration: none;
-    transition: all 0.2s;
-    color: #000;   
-}
-.colomn-l .friends-row .box a:hover {
-    color: #818c6f;
+.column-l .friends .box a {
+    font-size: 1.1em;
+    color: #000;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    border-radius: 0;
 }
 
-.colomn-r {
-    display: flex;
-    justify-content: center;
-    flex-flow: row;
-    flex-direction: column;
-    justify-content: flex-start;
+.friends-count {
+    text-align: center;
     margin: auto;
-    width: auto;
+    display: block;
+    margin: 10px 0px;
 }
 
-.colomn-r .vk-logo {
-    margin: 20px;
-    margin-bottom: 10px;
+.column-r {
+    margin-left: 20%;
+    width: 80%;
+    padding: 10px;
 }
 
-.colomn-r .vk-logo img {
+.column-r .vk-logo {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.column-r img {
+    width: 100%;
+    height: 100%;
+}
+
+.column-r .vk-logo img {
     width: 50px;
     height: 50px;
 }
 
-.colomn-r .wall {
+.column-r .wall {
     padding: 0;
-    margin: 0px 10%;
-    width: 80%;
-    word-break: break-all;
+    margin: 0px 6%;
+    width: 88%;
+    float: left;
+    word-break: break-word;
+    word-wrap: break-word;
 }
 
-.colomn-r .wall .box {
+.column-r .box {
     border: 1px solid #c3cbd4;
-    margin-bottom: 11px;
     padding: 5px;
+    margin-bottom: 7px;
+}
+
+.column-r .walls-count {
+    text-align: center;
+    margin-bottom: 7px;
 }

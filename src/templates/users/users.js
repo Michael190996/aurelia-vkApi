@@ -25,7 +25,7 @@ export class Users {
         
         let query = `
             return {
-                "info": API.users.get({"user_ids": ${params.id}})[0],
+                "info": API.users.get({"user_ids": ${params.id}, "fields": "domain"})[0],
                 "wall": API.wall.get({"owner_id": ${params.id}, "filter": "owner", "extended": 0}),
                 "friends": API.friends.get({"user_id": ${params.id}, "fields": "nickname, domain, sex, bdate"})
             };
