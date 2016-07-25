@@ -58,7 +58,7 @@ export class Users {
                 jsonp: 'callback',
                 dataType: 'jsonp',
                 data: {
-                    user_ids: this.user.id
+                    user_ids: params.id
                 },
                 success: (response) => {
                     if (response.error)
@@ -74,7 +74,7 @@ export class Users {
                 jsonp: 'callback',
                 dataType: 'jsonp',
                 data: {           
-                    owner_id: this.user.id,
+                    owner_id: params.id,
                     filter: 'owner',
                     extended: 0
                 },
@@ -92,7 +92,7 @@ export class Users {
                 jsonp: 'callback',
                 dataType: 'jsonp',
                 data: {    
-                    user_id: this.user.id,
+                    user_id: params.id,
                     fields: 'nickname, domain, sex, bdate'
                 },
                 success: (response) => {

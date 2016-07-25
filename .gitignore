@@ -1,4 +1,4 @@
-./.gitignore
+.idea
+jspm_packages
 node_modules
-package.json
 src/test.js
