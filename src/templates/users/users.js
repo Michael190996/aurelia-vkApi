@@ -44,7 +44,7 @@ export class Users {
                 } else {
                     this.user = e.response.response;
                 }
-                this.reload = true // закроется окно с той подгрузкой
+                this.reload = true; // закроется окно с той подгрузкой
             });
         } else {
             // запрос на информацию о пользователе

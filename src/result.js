@@ -19,7 +19,7 @@ export class Result {
     queryVk(url, _params) {
         let params = _params || {}
         if(this.access_token) {
-            params.access_token = this.access_token
+            params.access_token = this.access_token;
         }
         return this.http.createRequest(url)
                    .asJsonp('callback')
@@ -82,7 +82,7 @@ export class Result {
                 } else {
                     this.people = this.people.concat(e.response.response);
                 }
-                this.reload = true
+                this.reload = true;
             });
         }
     }
@@ -103,9 +103,10 @@ export class Result {
         
         this.reload = false;
         
-        this.friends = {};
+        this.friends = [];
         this.frOpacity = 0;
-        let listener = 0;
+        let listener = 0,
+            isFriend = {};
 
         // запрашивает друзей пользователей
         for (let people = 0; people < this.people.length; people++) {
@@ -117,20 +118,27 @@ export class Result {
             }).then((e) => {
                 // собираем друзей
                 el.friends = e.response.response;
-                for (let i in el.friends) {
-                    this.friends[el.friends[i].uid] = this.friends[el.friends[i].uid] || {
-                        uid: [],
-                        name: `${el.friends[i].last_name} ${el.friends[i].first_name}`,
-                        domain: el.friends[i].domain,
-                        sex: (el.friends[i].sex == 1 ? 'Женщина' : 'Мужчина'),
-                        date: (el.friends[i].bdate == undefined ? 'неизвестно' : el.friends[i].bdate),
-                        id: el.friends[i].uid,
-                        deactivated: el.friends[i].deactivated
-                    }
-
-                    this.friends[el.friends[i].uid].uid.push(el.friends[i].uid);
-                    if (this.friends[el.friends[i].uid].uid.length > this.frOpacity) {
-                        this.frOpacity = this.friends[el.friends[i].uid].uid.length;
+                
+                for (let i = 0; (el.friends && i < el.friends.length); i++) {
+                    if(el.friends[i].deactivated != 'deleted' && !isFriend[el.friends[i].uid]) {
+                        this.friends.push({
+                            uid: [el.friends[i].uid],
+                            id: el.friends[i].uid,
+                            domain: el.friends[i].domain,
+                            name: `${el.friends[i].last_name} ${el.friends[i].first_name}`,
+                            sex: (el.friends[i].sex == 1 ? 'Женщина' : 'Мужчина'),
+                            date: (el.friends[i].bdate == undefined ? 'неизвестно' : el.friends[i].bdate),
+                            deactivated: el.friends[i].deactivated,
+                            element: this.friends.length+1
+                        });
+                        
+                        isFriend[el.friends[i].uid] = this.friends.length;
+                        
+                    } else if(el.friends[i].deactivated != 'deleted') {
+                        this.friends[isFriend[el.friends[i].uid]].uid.push(el.friends[i].uid);
+                        if (this.friends[isFriend[el.friends[i].uid]].uid.length > this.frOpacity) {
+                            this.frOpacity = this.friends[isFriend[el.friends[i].uid]].uid.length;
+                        }
                     }
                 }
             }).then(() => {
@@ -139,16 +147,9 @@ export class Result {
                 // после того, как все запросы закончатся, пойдет фильтрация элементов
                 if (listener == this.people.length) {
                     this.frOpacity = 30 / this.frOpacity / 100;
-
-                    let friends = [];
-                    for (let i in this.friends) {
-                        if (this.friends[i] && this.friends[i].deactivated != 'deleted') {
-                            friends.push(this.friends[i]);
-                        }
-                    }
-
-                    this.friends = friends.sort((a, b) => {
-                        if (a.name == undefined || b.name == undefined) {
+                    
+                    this.friends = this.friends.sort((a, b) => {
+                        if (a.name && b.name) {
                             if (a.name > b.name) {
                                 return 1;
                             } else if (a.name < b.name) {
