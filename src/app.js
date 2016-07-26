@@ -1,6 +1,6 @@
-import { inject } from 'aurelia-framework';
-import bootstrap from 'bootstrap';
-import { Result } from './result';
+import { inject }  from 'aurelia-framework';
+import { Result }  from './result';
+import   bootstrap from 'bootstrap';
 
 @inject(bootstrap, Result)
 export class App {
@@ -14,7 +14,8 @@ export class App {
     
     constructor(bootstrap, result) {
         this.bootstrap = bootstrap;
-      //  this.access_token = 'd597a2952311278d07a83d065c2a827ac5442c109f852567f2fed2759b0f77ed07f3b0fc3e34ae19de962';
+        this.access_token = result.access_token;
+        this.queryVk = result.queryVk;
         this.result = result;
         this.reload = true;
     }
