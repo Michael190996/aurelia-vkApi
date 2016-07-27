@@ -13,6 +13,7 @@ export class Result {
 
     constructor(http) {
         this.http = http;
+        //this.access_token = '4732368ec1aae760780ae3149cece15459e76a20fa3c1ba1c605a083ca9a1f4ba723a05dfe0d6735c1d78';
     }
     
 
