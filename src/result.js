@@ -13,8 +13,8 @@ export class Result {
 
     constructor(http) {
         this.http = http;
-        //this.access_token = 'access_token';
     }
+    
 
     queryVk(url, _params) {
         let params = _params || {}
@@ -26,7 +26,7 @@ export class Result {
                    .withBaseUrl('https://api.vk.com/method')
                    .withParams(params).send();  
     }
-    
+
     // TODO: функция добавляет в массив people пользователей
     add(id) {
         // если запрос не закончился или в аргументе ничего нет, то выходим из функции
