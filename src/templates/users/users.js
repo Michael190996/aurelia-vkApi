@@ -33,7 +33,7 @@ export class Users {
             return {
                 "info": API.users.get({"user_ids": ${params.id}, "fields": "domain"})[0],
                 "wall": API.wall.get({"owner_id": ${params.id}, "filter": "owner", "extended": 0}),
-                "friends": API.friends.get({"user_id": ${params.id}, "fields": "nickname, domain, sex, bdate"})
+                "friends": API.friends.get({"user_id": ${params.id}, "fields": "nickname, domain, sex, bdate", "count": 100})
             };
         `;
 
@@ -69,7 +69,8 @@ export class Users {
             this.queryVk('wall.get', {
                 owner_id: params.id,
                 filter: 'owner',
-                extended: 0
+                extended: 0,
+                count: 100
             }).then((e) => {
                 if (e.response.error) {
                     alert(e.response.error.error_msg);
