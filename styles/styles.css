@@ -21,6 +21,7 @@ body .reload {
 body .not-reload {
     opacity: 0 !important;
     top: -100% !important;
+    overflow: auto;
 }
 
 body .blur * {
@@ -44,6 +45,7 @@ body .blur * {
     text-align: center;
     z-index: 1;
     background: rgba(0, 0, 0, 0.55);
+    overflow: hidden;
 }
 
 .reload .loading {

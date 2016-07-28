@@ -28,7 +28,7 @@
                         <img src.bind="photo.photo.src_big" alt="">
                     </div>-->
 
-                    <span innerhtml.bind="wall.text"></span>
+                    <span innerhtml.bind="wallReplace(wall.text)"></span>
                 </li>
             </ul>
             <div class="walls-count col-md-12 col-xs-12 col-sm-12"><small>Всего постов: ${(user.wall.length ? user.wall.length-1+' из '+user.wall[0]: '~~~')}</small></div>

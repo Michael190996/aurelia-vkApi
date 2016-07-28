@@ -19,6 +19,11 @@ export class Users {
         this.app = app;
     }
 
+    wallReplace(str) {
+        // поиск ссылки в тексте
+        return str.replace(/(http(s|)\:\/\/[^\<\>\s\,\!\:\;]+[\w\/][^\;\:\.\,\&\?\*\^\%\$\#\@\!\(\)\{\}|[\]\<\>]{0,9})/g, '<a href="$1">$1</a>');
+    }
+    
     // TODO: запросы на информацию о пользователе
     activate(params) {
         this.reload = false; // окно с подгрузкой        
@@ -49,7 +54,8 @@ export class Users {
         } else {
             // запрос на информацию о пользователе
             this.queryVk('users.get', {
-                user_id: params.id
+                user_id: params.id,
+                fields: 'domain'
             }).then((e) => {
                 if (e.response.error) {
                     alert(e.response.error.error_msg);
@@ -76,7 +82,7 @@ export class Users {
             // запрос на друзей пользователя
             this.queryVk('friends.get', {
                 user_id: params.id,
-                fields: 'nickname, domain, sex, bdate'
+                fields: 'nickname, domain, sex, bdate, domain'
             }).then((e) => {
                 if (e.response.error) {
                     alert(e.response.error.error_msg);
